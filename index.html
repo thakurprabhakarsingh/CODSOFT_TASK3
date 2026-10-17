@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise - Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <main class="app-card">
+    <header class="app-header">
+      <div>
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Track your daily income & expenses</p>
+      </div>
+    </header>
+
+    <!-- Overview Balance Cards -->
+    <section class="balance-card">
+      <span class="label">Total Balance</span>
+      <h2 id="total-balance">₹0.00</h2>
+    </section>
+
+    <section class="summary-grid">
+      <div class="summary-box income">
+        <span class="box-title">Income</span>
+        <p id="total-income">+₹0.00</p>
+      </div>
+      <div class="summary-box expense">
+        <span class="box-title">Expense</span>
+        <p id="total-expense">-₹0.00</p>
+      </div>
+    </section>
+
+    <!-- Transaction Form -->
+    <form id="transaction-form" class="transaction-form">
+      <div class="form-row">
+        <input 
+          type="text" 
+          id="desc-input" 
+          placeholder="Description (e.g. Salary, Groceries)" 
+          required 
+          autocomplete="off"
+        >
+      </div>
+      
+      <div class="form-row flex-row">
+        <input 
+          type="number" 
+          id="amount-input" 
+          placeholder="Amount (₹)" 
+          min="1" 
+          step="any" 
+          required
+        >
+        <select id="type-select">
+          <option value="expense">Expense</option>
+          <option value="income">Income</option>
+        </select>
+      </div>
+
+      <div class="form-row flex-row">
+        <select id="category-select">
+          <option value="General">General</option>
+          <option value="Salary">Salary</option>
+          <option value="Food">Food & Dining</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills & Utilities</option>
+          <option value="Entertainment">Entertainment</option>
+        </select>
+        <button type="submit" class="btn-primary">Add Entry</button>
+      </div>
+    </form>
+
+    <!-- Filters & History -->
+    <div class="history-header">
+      <h3>Transaction History</h3>
+      <select id="filter-select" class="filter-dropdown">
+        <option value="all">All Categories</option>
+        <option value="Salary">Salary</option>
+        <option value="Food">Food & Dining</option>
+        <option value="Shopping">Shopping</option>
+        <option value="Bills">Bills & Utilities</option>
+        <option value="Entertainment">Entertainment</option>
+        <option value="General">General</option>
+      </select>
+    </div>
+
+    <ul id="transaction-list" class="transaction-list">
+      <!-- Rendered dynamically via JavaScript -->
+    </ul>
+
+    <div id="empty-state" class="empty-state hidden">
+      <p>No transactions added yet.</p>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
